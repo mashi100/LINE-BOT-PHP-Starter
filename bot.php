@@ -16,10 +16,27 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
+			// find time
+			$param = array(
+				'user_id' => $text,
+			);
+			$param = json_encode($param);
+			$ch = curl_init();
+
+			curl_setopt($ch, CURLOPT_URL,"http://eservice.depa.or.th/service_api/time_service.php");
+			curl_setopt($ch, CURLOPT_POST, 1);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, 'parameter='.$param);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			$server_output = curl_exec ($ch);
+			curl_close ($ch);
+			$p = json_decode($server_output, true);
+			$t1 =$p[0]['TimeIn'];
+			// end find time
+				
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $text
+				'text' => $t1
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
@@ -41,7 +58,7 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 
 			echo $result . "\r\n";
-		}
+		} 
 	}
 }
 echo "OK";
