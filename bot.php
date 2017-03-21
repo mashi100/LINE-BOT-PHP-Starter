@@ -35,10 +35,11 @@ if (!is_null($events['events'])) {
 			$t1 =$p[0]['TimeIn'];
 			// end find time
 				
+			$reply = $t1." ".$u;	
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',				
-				'text' => $t1
+				'text' => $reply
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
