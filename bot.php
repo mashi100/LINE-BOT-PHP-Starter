@@ -16,7 +16,7 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			// Get User ID
-			$u = $event['source']['userId'];
+			//$u = $event['source']['userId'];
 
 			// find time
 			$param = array(
@@ -37,8 +37,8 @@ if (!is_null($events['events'])) {
 				
 			// Build message to reply back
 			$messages = [
-				'type' => 'text',
-				'text' => $t1.'-'.$u;
+				'type' => 'text',				
+				'text' => $t1;
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
