@@ -20,22 +20,27 @@ if (!is_null($events['events'])) {
 
 			// find time
 			$param = array(
-				'user_id' => $text,
+				'username' => $text,
+				'line_user_id' => $u				
 			);
 			$param = json_encode($param);
 			$ch = curl_init();
 
-			curl_setopt($ch, CURLOPT_URL,"http://eservice.depa.or.th/service_api/time_service.php");
+			curl_setopt($ch, CURLOPT_URL,"http://eservice.depa.or.th/service_api/line_register_service.php");
 			curl_setopt($ch, CURLOPT_POST, 1);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, 'parameter='.$param);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			$server_output = curl_exec ($ch);
 			curl_close ($ch);
 			$p = json_decode($server_output, true);
-			$t1 =$p[0]['TimeIn'];
+			if($p[0] == '1') {
+				$reply = 'Register Success';
+			} else {
+				$reply = 'Register Fail!!';
+			}
 			// end find time
 				
-			$reply = $t1." ".$u;	
+				
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',				
