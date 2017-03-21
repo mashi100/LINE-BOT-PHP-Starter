@@ -63,5 +63,5 @@ if (!is_null($events['events'])) {
 		} 
 	}
 }
-echo "OK $u";
+echo "OK --> $u";
 ?>
