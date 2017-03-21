@@ -18,7 +18,7 @@ $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
 	$server_output = curl_exec ($ch);
 	curl_close ($ch);
 
-	echo 'Result : [---'.$server_output.'---]';
+	//echo 'Result : [---'.$server_output.'---]';
 	$p = json_decode($server_output, true);
 
 	$cnt = count($p);
