@@ -16,7 +16,7 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			// Get User ID
-			//$u = $event['source']['userId'];
+			$u = $event['source']['userId'];
 
 			// find time
 			$param = array(
@@ -63,5 +63,5 @@ if (!is_null($events['events'])) {
 		} 
 	}
 }
-echo "OK";
+echo "OK $u";
 ?>
