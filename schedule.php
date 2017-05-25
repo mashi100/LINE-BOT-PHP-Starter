@@ -11,7 +11,7 @@ $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
 // Find User and Time Attendance
 	$ch = curl_init();
 
-	curl_setopt($ch, CURLOPT_URL,"http://eservice.depa.or.th/service_api/time_service.php");
+	curl_setopt($ch, CURLOPT_URL,"http://eservice.depa.or.th/service_api/schedule_service.php");
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, 'parameter='.$param);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
